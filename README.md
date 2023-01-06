@@ -63,3 +63,6 @@ README〜ER図作成：12/31〆切
 
 ### ■画面遷移図
 [画面遷移図](https://www.figma.com/file/tvDbdZaatlwxrx1UqF9Swe/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0%3A1&t=wqBr0aBA8R8MmxPt-1)
+
+### ■ER図
+<img width="855" alt="スクリーンショット 2023-01-05 21 58 04" src="https://user-images.githubusercontent.com/86270681/210786346-f978fa52-1976-4812-a49f-3a885236c3b7.png">
