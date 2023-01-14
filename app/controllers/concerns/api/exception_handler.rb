@@ -15,6 +15,10 @@ module Api::ExceptionHandler
   def render_404(exception = nil, messages = nil)
     render_error(404, 'Record Not Found', exception&.message, *messages)
   end
+
+  def render_401(exception = nil, messages = nil)
+    render_error(401, 'Unauthorized', exception&.message, *messages)
+  end
   
   def render_500(exception = nil, messages = nil)
     render_error(500, 'Internal Server Error', exception&.message, *messages)

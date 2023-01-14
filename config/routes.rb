@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         resources :requests
       end
       resource :registration, only: [:create]
+      resource :authentication, only: [:create]
     end
   end
 end
