@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_14_052558) do
+ActiveRecord::Schema.define(version: 2023_01_14_114721) do
 
   create_table "api_keys", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2023_01_14_052558) do
     t.string "salt"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "random_id"
   end
 
   add_foreign_key "api_keys", "users"
