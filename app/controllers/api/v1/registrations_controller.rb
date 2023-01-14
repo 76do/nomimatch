@@ -7,7 +7,6 @@ module Api
       def create
         user = User.new(user_params)
         user.set_random_id!
-        byebug
         if user.save 
           set_access_token!(user)
           json_string = UserSerializer.new(user).serialized_json
