@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_09_042229) do
+ActiveRecord::Schema.define(version: 2023_01_13_094615) do
 
   create_table "request_histories", charset: "utf8", force: :cascade do |t|
     t.string "phone_number"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2023_01_09_042229) do
     t.integer "number_of_people"
     t.integer "atmosphere"
     t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", charset: "utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "crypted_password"
+    t.string "salt"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
