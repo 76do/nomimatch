@@ -1,0 +1,7 @@
+ja:
+  api:
+    v1:
+      authentications:
+        create:
+          failed: 'ログインに失敗しました'
+

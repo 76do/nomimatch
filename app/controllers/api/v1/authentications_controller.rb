@@ -11,7 +11,7 @@ module Api
           json_string = UserSerializer.new(user).serialized_json
           render json: json_string 
         else
-          render_401(nil, 'Login failed')
+          render_401(nil, I18n.t("api.v1.authentications.create.failed"))
         end
       end
   
