@@ -5,3 +5,6 @@ ja:
         create:
           failed: 'ログインに失敗しました'
 
+      users:
+        name:
+          failed: 'URLが間違っています'

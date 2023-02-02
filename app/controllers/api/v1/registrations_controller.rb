@@ -12,7 +12,6 @@ module Api
           json_string = UserSerializer.new(user).serialized_json
           render json: json_string 
         else
-          puts user.errors.full_messages
           render_400(nil, user.errors.full_messages)
         end
       end
