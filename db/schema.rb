@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_14_114721) do
+ActiveRecord::Schema.define(version: 2023_02_02_131829) do
 
   create_table "api_keys", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -28,13 +28,17 @@ ActiveRecord::Schema.define(version: 2023_01_14_114721) do
   end
 
   create_table "requests", charset: "utf8", force: :cascade do |t|
+    t.string "sender_name", null: false
     t.string "shop_url"
-    t.string "dismissal_time"
+    t.integer "dismissal_time"
     t.integer "number_of_people"
+    t.integer "budget"
     t.integer "atmosphere"
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -48,4 +52,5 @@ ActiveRecord::Schema.define(version: 2023_01_14_114721) do
   end
 
   add_foreign_key "api_keys", "users"
+  add_foreign_key "requests", "users"
 end
