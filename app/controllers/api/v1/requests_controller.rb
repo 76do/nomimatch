@@ -5,8 +5,15 @@ module Api
       skip_before_action :authenticate
 
       def create
-        RequestMailer.with(user: @user).request_email.deliver_later
-        render_400(nil, "飲み会依頼の送信に失敗しました。")
+        @request = @user.requests.build(sender_name: params[:name], shop_url: params[:shop], dismissal_time: params[:time],
+        number_of_people: params[:numberOfPeople], budget: params[:budget], atmosphere: params[:atmosphere], message: params[:message])
+        
+        if @request.save
+          byebug
+          RequestMailer.with(user: @user, request: @request).request_email.deliver_later
+        else
+          render_400(nil, "飲み会依頼の送信に失敗しました。")
+        end
       end
 
       private
