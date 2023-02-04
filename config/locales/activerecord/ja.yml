@@ -2,9 +2,48 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
+      request: '飲み会依頼'
     attributes:
       user:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード(確認)'
         name: 'ユーザー名'
+      request:
+        sender_name: '依頼人名'
+        dismissal_time: '希望解散時間'
+        number_of_people: '希望人数'
+        budget: '予算'
+        atmosphere: '飲み会の雰囲気'
+        message: 'メッセージ'
+  enums:
+    request:
+      dismissal_time: 
+        unspecified: '希望なし'
+        seventeen: '17：00'
+        eighteen: '18：00'
+        nineteen: '19：00'
+        twenty: '20：00'
+        twenty_one: '21：00'
+        twenty_two: '22：00'
+        twenty_three: '23：00'
+        twenty_four: '24：00'
+      number_of_people:
+        unspecified: '希望なし'
+        small: '1~5人'
+        medium: '6~10人'
+        large: '11人以上'
+      budget:
+        unspecified: '希望なし'
+        three_thousand: '~3000円'
+        five_thousand: '3001円~5000円'
+        ten_thousand: '5001円~10000円'
+        fifteen_thousand: '10001円~15000円'
+        more: '15001円~'
+
+
+
+
+
+
+
