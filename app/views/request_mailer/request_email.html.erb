@@ -2,14 +2,21 @@
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
-  <body>
-    <h1><%= @request.sender_name %>さんから飲み会依頼が届きました！</h1>
-
-    <h3>■飲み会依頼概要</h3>
-    <p>行きたいお店：<%= @request.decorate.shop_url %></p>
-    <p>希望解散時間：<%= @request.dismissal_time_i18n %></p>
-    <p>予算：<%= @request.budget_i18n %></p>
-    <p>飲み会の雰囲気：<%= @request.decorate.atmosphere_string %></p>
-    <p>メッセージ：<%= @request.message %></p>
+  <body style="background-color:#ff8c00;">
+    <div style="width: 80%; margin:0 auto; background-color:white; border-radius:25px;">
+      <div style="width: 80%; margin:0 auto; padding:10px 0px 10px 0px; margin-top:30px;">
+        <img src='/logo.png' style="width: 60%; display: block; margin:0 auto; padding:10px 0 20px 0;"%>
+        <p style="font-size:20px;"><%= @user.name %>さん</p>
+        <p style="font-size:18px;"><span style="color:#ffa500;"><%= @request.sender_name%></span>さんから以下内容で飲み会依頼が届いています！</p>
+        <div style="padding-top:15px; padding-bottom:30px;">
+        <h3>■飲み会依頼概要</h3>
+        <p>行きたいお店：<%= @request.decorate.shop_url %></p>
+        <p>希望解散時間：<%= @request.dismissal_time_i18n %></p>
+        <p>予算：<%= @request.budget_i18n %></p>
+        <p>飲み会の雰囲気：<%= @request.decorate.atmosphere_string %></p>
+        <p>メッセージ：<%= @request.message %></p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

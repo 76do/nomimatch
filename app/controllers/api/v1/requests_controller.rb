@@ -9,7 +9,6 @@ module Api
         number_of_people: params[:numberOfPeople], budget: params[:budget], atmosphere: params[:atmosphere], message: params[:message])
         
         if @request.save
-          byebug
           RequestMailer.with(user: @user, request: @request).request_email.deliver_later
         else
           render_400(nil, "飲み会依頼の送信に失敗しました。")
