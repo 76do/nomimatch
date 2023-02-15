@@ -2,7 +2,7 @@ module Api
   module V1
     class AuthenticationsController < ApplicationController
 
-      skip_before_action :authenticate
+      skip_before_action :authenticate, only: [:create]
 
       def create
         user = login(params[:email], params[:password])
@@ -15,6 +15,17 @@ module Api
         end
       end
   
+      def current_user_info
+        json_string = UserSerializer.new(@_current_user).serialized_json
+        render json: json_string
+      end
+  
+      def destroy
+        logout
+        @_current_user.api_keys.active_token.update_all(active: false)
+        render json: {}
+      end
+
       private
       
       def form_authenticity_token; end

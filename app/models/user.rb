@@ -15,7 +15,7 @@ class User < ApplicationRecord
   end
   
   def activate_api_key!
-    return api_keys.active.first if api_keys.active.exists?
+    return api_keys.active_token.first if api_keys.active_token.exists?
     api_keys.create!
   end
 end
