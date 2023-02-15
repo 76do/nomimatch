@@ -4,7 +4,8 @@ ja:
       authentications:
         create:
           failed: 'ログインに失敗しました'
-
+        destroy:
+          success: 'ログアウトしました'
       users:
         name:
           failed: 'URLが間違っています'
