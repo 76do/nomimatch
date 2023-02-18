@@ -32,7 +32,5 @@
 
 /vendor/*
 
-/config/database.yml
-
 /config/master.key
 /config/credentials.yml.enc
