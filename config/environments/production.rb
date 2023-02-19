@@ -56,12 +56,12 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "nomimatch_production"
 
   config.action_mailer.perform_caching = false
-  host = ENV['AWS_NOMIMATCH_HOST']
+  host = 'nomimatch.com' 
 
-  credentials = Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
+  credential = Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
   Aws::Rails.add_action_mailer_delivery_method(
     :ses,
-    credentials:,
+    credentials: credential,
     region: 'ap-northeast-1'
   )
   
