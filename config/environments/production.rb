@@ -56,20 +56,19 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "nomimatch_production"
 
   config.action_mailer.perform_caching = false
-  host = 'nomimatch.com' 
-
-  credential = Aws::Credentials.new(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'])
-  Aws::Rails.add_action_mailer_delivery_method(
-    :ses,
-    credentials: credential,
-    region: 'ap-northeast-1'
-  )
-  
-  config.action_mailer.default_url_options = { host: host } 
-  config.action_mailer.delivery_method = :ses
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.perform_caching = false
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  host = ENV['AWS_NOMIMATCH_HOST'] 
+  config.action_mailer.default_url_options = { host: host } 
+  ActionMailer::Base.smtp_settings = {
+    :domain => ENV['AWS_NOMIMATCH_SMTP_DOMAIN'],
+    :address => ENV['AWS_NOMIMATCH_SMTP_ADDRESS'],
+    :port => '465',
+    :authentication => :plain,
+    :ssl => true,
+    :user_name => ENV['AWS_NOMIMATCH_SMTP_USERNAME'],
+    :password => ENV['AWS_NOMIMATCH_SMTP_PASSWORD'],
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
