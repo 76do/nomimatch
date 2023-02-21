@@ -8,9 +8,9 @@ class RequestDecorator < Draper::Decorator
   end
 
   def atmosphere_string
-    if (object.atmosphere < 50)
+    if (object.atmosphere < 34)
       "しっぽり会話を楽しみながら飲みたい!"
-    elsif (object.atmosphere > 50)
+    elsif (object.atmosphere > 66)
       "ワイワイ騒ぎながら飲みたい！"
     else
       "静かすぎず、騒ぎすぎず、程よく飲みたい！"
