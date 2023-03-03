@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :api_keys
   has_many :requests
   has_many :user_rooms
+  has_many :rooms, through: :user_rooms
+  scope :opponent, ->(current_user) { where.not(id: current_user.id)}
   
   def set_random_id!
     self.random_id = SecureRandom.urlsafe_base64(15)  
