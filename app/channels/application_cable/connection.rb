@@ -1,6 +1,5 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    include ActionController::HttpAuthentication::Token::ControllerMethods
     identified_by :current_user
 
     def connect
@@ -10,9 +9,7 @@ module ApplicationCable
     private
 
     def find_verified_user!
-      authenticate_or_request_with_http_token do |token,_options|
-        ApiKey.active_token.find_by(access_token: token)&.user
-      end
+      reject_unauthorized_connection unless ApiKey.active_token.find_by(access_token: cookies[:accessToken])&.user
     end
   end
 end

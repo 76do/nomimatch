@@ -1,2 +1,0 @@
-class RequestHistory < ApplicationRecord
-end
