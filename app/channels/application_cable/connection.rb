@@ -6,10 +6,12 @@ module ApplicationCable
       self.current_user = find_verified_user!
     end
 
-    private
+    protected
 
     def find_verified_user!
-      reject_unauthorized_connection unless ApiKey.active_token.find_by(access_token: cookies[:accessToken])&.user
+      user = ApiKey.active_token.find_by(access_token: cookies[:accessToken])&.user
+      reject_unauthorized_connection unless user 
+      return user
     end
   end
 end

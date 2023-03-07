@@ -3,8 +3,7 @@ module Api
     class ChatsController < ApplicationController
 
       def index
-        byebug
-        chats_array = current_user.rooms.map do |room|
+        chats_array = current_user.rooms.order(id: :desc).map do |room|
           {
             id: room.id,
             opponent: room.users.opponent(@_current_user),
