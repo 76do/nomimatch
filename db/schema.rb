@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_06_231747) do
+ActiveRecord::Schema.define(version: 2023_03_03_035008) do
 
   create_table "api_keys", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -22,10 +22,14 @@ ActiveRecord::Schema.define(version: 2023_02_06_231747) do
     t.index ["user_id"], name: "index_api_keys_on_user_id"
   end
 
-  create_table "request_histories", charset: "utf8", force: :cascade do |t|
-    t.string "phone_number"
+  create_table "chat_messages", charset: "utf8", force: :cascade do |t|
+    t.text "message"
+    t.bigint "user_id"
+    t.bigint "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_chat_messages_on_room_id"
+    t.index ["user_id"], name: "index_chat_messages_on_user_id"
   end
 
   create_table "requests", charset: "utf8", force: :cascade do |t|
@@ -42,6 +46,20 @@ ActiveRecord::Schema.define(version: 2023_02_06_231747) do
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
+  create_table "rooms", charset: "utf8", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_rooms", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "room_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_user_rooms_on_room_id"
+    t.index ["user_id"], name: "index_user_rooms_on_user_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -53,5 +71,9 @@ ActiveRecord::Schema.define(version: 2023_02_06_231747) do
   end
 
   add_foreign_key "api_keys", "users"
+  add_foreign_key "chat_messages", "rooms"
+  add_foreign_key "chat_messages", "users"
   add_foreign_key "requests", "users"
+  add_foreign_key "user_rooms", "rooms"
+  add_foreign_key "user_rooms", "users"
 end

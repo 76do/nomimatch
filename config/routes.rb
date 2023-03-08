@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       end
 
       get 'current_user' => 'authentications#current_user_info'
+      get 'chats' => 'chats#index'
       resource :registration, only: [:create]
       resource :authentication, only: [:create, :destroy]
 

@@ -9,6 +9,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   has_many :api_keys
   has_many :requests
+  has_many :user_rooms
+  has_many :rooms, through: :user_rooms
   
   def set_random_id!
     self.random_id = SecureRandom.urlsafe_base64(15)  
