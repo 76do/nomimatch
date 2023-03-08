@@ -17,7 +17,7 @@ module Api
         number_of_people: params[:numberOfPeople], budget: params[:budget], atmosphere: params[:atmosphere], message: params[:message])
         
         if @request.save
-          if @sender_user
+          if @sender_user && @sender_user.id != @user.id
             room = Room.create!
             room.users << @user
             room.users << @sender_user

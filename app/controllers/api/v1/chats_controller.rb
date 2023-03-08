@@ -3,11 +3,12 @@ module Api
     class ChatsController < ApplicationController
 
       def index
-        chats_array = current_user.rooms.order(id: :desc).map do |room|
+        rooms = current_user.rooms.includes(:users, :chat_messages).order('chat_messages.created_at DESC').uniq
+        chats_array = rooms.map do |room|
           {
             id: room.id,
-            opponent: room.users.opponent(@_current_user),
-            chat_message: room.chat_messages,
+            opponent: room.users.reject{|user| user.id == @_current_user.id}.first,
+            chat_message: room.chat_messages.order('created_at ASC'),
           }
         end
         render json: chats_array, status: 200
