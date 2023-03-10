@@ -11,8 +11,6 @@ class User < ApplicationRecord
   has_many :requests
   has_many :user_rooms
   has_many :rooms, through: :user_rooms
-  has_many :authentications, dependent: :destroy
-  accepts_nested_attributes_for :authentications
   
   def set_random_id!
     self.random_id = SecureRandom.urlsafe_base64(15)  
