@@ -12,11 +12,9 @@ Rails.application.routes.draw do
         get 'requests' => 'requests#index'
       end
 
-      get 'oauth/:provider', to: 'oauths#oauth'
-      post 'oauth/callback', to: 'oauths#callback'
       get 'current_user' => 'authentications#current_user_info'
       get 'chats' => 'chats#index'
-      resource :registration, only: [:create]
+      resource :registration, only: [:create, :update]
       resource :authentication, only: [:create, :destroy]
 
       if Rails.env.development?
