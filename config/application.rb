@@ -42,5 +42,6 @@ module Nomimatch
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]  
     config.middleware.use ActionDispatch::Cookies
     config.action_cable.mount_path = "/cable"
+    config.autoloader = :classic
   end
 end
