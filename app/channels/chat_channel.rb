@@ -1,5 +1,6 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
+    binding.irb
     stream_from "chat_channel_#{params[:room_id]}"
     @room = Room.find(params[:room_id])
   end

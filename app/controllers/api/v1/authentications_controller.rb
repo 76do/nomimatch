@@ -5,10 +5,8 @@ module Api
       skip_before_action :authenticate, only: [:create]
 
       def create
-        binding.irb
         user = login(params[:email], params[:password])
         if user
-          binding.irb
           set_access_token!(user)
           json_string = UserSerializer.new(user).serialized_json
           render json: json_string 
