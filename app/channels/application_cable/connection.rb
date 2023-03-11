@@ -10,7 +10,8 @@ module ApplicationCable
     protected
 
     def find_verified_user!
-      user = ApiKey.active_token.find_by(access_token: cookies[:accessToken])&.user
+      binding.irb
+      user = ApiKey.active_token.find_by(access_token: params[:token])&.user
       reject_unauthorized_connection unless user 
       return user
     end
